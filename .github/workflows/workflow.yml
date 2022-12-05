@@ -1,0 +1,15 @@
+on: [push]
+jobs:
+  emobon_job:
+    runs-on: ubuntu-latest
+    name: emobon dm repo constructor job
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: emobon dm repo constructor
+        uses: bulricht/emobon_dm_repo_constructor@stable
+        env:
+          PAT: ${{ secrets.PAT }}
+          FILE_PATH: EMO_BON_metadata_links.csv
+          ORG: bulricht-org
+          CHILD_ACTION: bulricht/emobon_dm_gdrive_downloader@stable
